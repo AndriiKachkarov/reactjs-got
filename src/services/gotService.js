@@ -40,6 +40,7 @@
 
      _transformChar(char) {
         return {
+            id: char.url.split('/').pop(),
             name: char.name,
             gender: char.gender,
             born: char.born,
