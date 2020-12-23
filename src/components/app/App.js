@@ -1,25 +1,34 @@
-import logo from '../../logo.svg';
-import './App.css';
+import React from 'react';
+import {Col, Row, Container} from 'reactstrap';
+import Header from '../header/header';
+import RandomChar from '../randomChar/randomChar';
+import ItemList from '../itemList/itemList';
+import CharDetails from '../charDetails/charDetails';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <Container>
+          <Header />
+        </Container>
+        <Container>
+          <Row>
+            <Col lg={{size: 5, offset: 0}}>
+              <RandomChar/>
+            </Col>
+          </Row>
+          <Row>
+            <Col md='6'>
+              <ItemList />
+            </Col>
+            <Col md='6'>
+              <CharDetails />
+            </Col>
+          </Row>
+        </Container>
+      </>
   );
-}
+};
 
 export default App;
