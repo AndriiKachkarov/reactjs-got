@@ -22,19 +22,19 @@ export default class RandomChar extends Component {
 
     onCharLoaded = char => {
         this.setState({char, loading: false});
+        setTimeout(this.updateChar, 4000);
     };
 
     onError = e => {
         this.setState({error: true, loading: false})
     };
 
-    updateChar() {
-        // const id = Math.floor(Math.random() * 140 + 25);
-        const id = -1
+    updateChar = () => {
+        const id = Math.floor(Math.random() * 140 + 25);
         this.gotService.getChar(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
-    }
+    };
 
     render() {
         const {char, loading, error} = this.state;
