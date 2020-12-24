@@ -2,7 +2,7 @@
 
     _apiBase = 'https://www.anapioficeandfire.com/api';
 
-    async getResource(url) {
+     getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
 
         if (!res.ok) {
@@ -11,29 +11,29 @@
         }
 
         return await res.json();
-    }
+    };
 
-    async getAllChars() {
+     getAllChars = async () => {
         const chars = await this.getResource('/characters?page=5&pageSize=10');
         return chars.map(char => this._transformChar(char));
-    }
+    };
 
-    async getChar(id) {
+     getChar = async (id) => {
         const char = await this.getResource(`/characters/${id}`);
         return this._transformChar(char);
-    }
+    };
 
-    async getAllHouses() {
+     getAllHouses = async () => {
         const houses = await this.getResource('/houses/');
         return houses.map(this._transformHose);
-    }
+    };
 
-     async getHouse(id) {
+     getHouse = async (id) => {
          const house = await this.getResource(`/houses/${id}`);
          return this._transformHose(house);
-     }
+     };
 
-     async getAllBooks() {
+     getAllBooks = async () => {
          const books = await this.getResource('/books/');
          return books.map(this._transformBook());
      }
