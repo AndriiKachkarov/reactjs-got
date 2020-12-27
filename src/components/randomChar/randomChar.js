@@ -11,6 +11,12 @@ export default class RandomChar extends Component {
         this.updateChar();
     }
 
+    componentWillUnmount() {
+        clearTimeout(this.timer);
+    }
+
+    timer = null;
+
 
     gotService = new gotService();
 
@@ -22,7 +28,7 @@ export default class RandomChar extends Component {
 
     onCharLoaded = char => {
         this.setState({char, loading: false});
-        setTimeout(this.updateChar, 4000);
+        this.timer = setTimeout(this.updateChar, 4000);
     };
 
     onError = e => {

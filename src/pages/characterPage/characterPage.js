@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './characterPage.css';
-import ItemList from "../itemList/itemList";
-import ItemDetails from "../itemDetails/itemDetails";
-import ErrorMessage from "../errorMassege/errorMessage";
 import gotService from "../../services/gotService";
-import RowBlock from "../rowBlock/rowBlock";
-import Field from "../field/field";
+import ErrorMessage from "../../components/errorMassege/errorMessage";
+import ItemList from "../../components/itemList/itemList";
+import ItemDetails from "../../components/itemDetails/itemDetails";
+import Field from "../../components/field/field";
+import RowBlock from "../../components/rowBlock/rowBlock";
 
 
 

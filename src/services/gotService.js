@@ -35,8 +35,13 @@
 
      getAllBooks = async () => {
          const books = await this.getResource('/books/');
-         return books.map(this._transformBook());
-     }
+         return books.map(this._transformBook);
+     };
+
+     getBook = async (id) => {
+         const book = await this.getResource(`/books/${id}`);
+         return this._transformBook(book);
+     };
 
      _transformChar(char) {
         return {
@@ -51,6 +56,7 @@
 
      _transformHose(house) {
          return {
+             id: house.url.split('/').pop(),
              name: house.name,
              region: house.region,
              words: house.words,
@@ -62,9 +68,10 @@
 
      _transformBook(book) {
          return {
+             id: book.url.split('/').pop(),
              name: book.name,
              numberOfPages: book.numberOfPages,
-             publiser: book.publiser,
+             publisher: book.publisher,
              released: book.released,
          }
      }
