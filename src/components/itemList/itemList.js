@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import './itemList.css';
-import Spinner from "../spinner/spinner";
-export default class ItemList extends Component {
+import PropTypes from "prop-types";
+import withData from "../../hoc/withData";
 
-    state = {
-        itemList: null
+class ItemList extends Component {
+
+    static propTypes = {
+        onItemSelect: PropTypes.func
     };
 
-    componentDidMount() {
-
-        const {getData} = this.props;
-
-        getData()
-            .then(itemList => {
-                this.setState({itemList})
-            });
+    static defaultProps = {
+        onItemSelect: () => {}
     };
+
+
 
     renderItems = (itemList) => {
         return itemList.map((item) => {
@@ -36,13 +34,8 @@ export default class ItemList extends Component {
 
     render() {
 
-        const {itemList} = this.state;
-
-        if (!itemList) {
-            return <Spinner/>
-        }
-
-        const items = this.renderItems(itemList);
+        const {data} = this.props;
+        const items = this.renderItems(data);
 
 
         return (
@@ -52,3 +45,6 @@ export default class ItemList extends Component {
         );
     }
 }
+
+export default withData(ItemList);
+

@@ -9,6 +9,7 @@ import HousePage from "../../pages/housePage/housePage";
 import BookPage from "../../pages/bookPage/bookPage";
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import BookItem from "../../pages/bookItem/bookItem";
+import gotService from "../../services/gotService";
 
 
 export default class App extends Component {
